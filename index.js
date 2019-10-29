@@ -3,13 +3,20 @@ const express = require('express');
 
 
 /*imports*/
-const postsRouter = require('./posts/PostsRouter.js')
+const postsRouter = require('./posts/PostsRouter')
 
 /*server*/
 
 const server = express();
 server.use(express.json());
-server.use('/api/posts', postsRouter);
+
+server.get("/", (req, res) => {
+    res.send(`
+      
+      <p>testing API</p>
+    `);
+  });
+server.use("/api/posts", postsRouter);
 
 
 server.listen(8000, () => {
